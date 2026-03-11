@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Book Suggestor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- STEP 1: WELCOME -->
+  <div class="step" id="step1">
+    <div class="welcome-box">
+      <div class="book-icon">📚</div>
+      <h1>Student Book Suggestor</h1>
+      <p class="subtitle">Find the perfect books for your branch,
+       year and difficulty level</p>
+      <button class="btn-primary" onclick="goTo(2)">
+        Get Started →
+      </button>
+      <div class="credit">
+        <p>Built by <span>Gandreddi Harish</span></p>
+        <p>harishgandreddi18@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: YEAR & BRANCH -->
+  <div class="step hidden" id="step2">
+    <div class="card">
+      <div class="step-indicator">Step 1 of 2</div>
+      <h2>Select Your Details</h2>
+      <p class="step-sub">Tell us your year and branch</p>
+
+      <div class="form-group">
+        <label>Academic Year</label>
+        <select id="yearSelect">
+          <option value="">-- Select Year --</option>
+          <option value="1">1st Year</option>
+          <option value="2">2nd Year</option>
+          <option value="3">3rd Year</option>
+          <option value="4">4th Year</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Branch / Department</label>
+        <select id="branchSelect" onchange="loadSubjects()">
+          <option value="">-- Select Branch --</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="Mechanical">Mechanical</option>
+          <option value="Civil">Civil</option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-back" onclick="goTo(1)">← Back</button>
+        <button class="btn-primary" onclick="goTo(3)">Proceed →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: SUBJECT & DIFFICULTY -->
+  <div class="step hidden" id="step3">
+    <div class="card">
+      <div class="step-indicator">Step 2 of 2</div>
+      <h2>Almost There!</h2>
+      <p class="step-sub">Select your subject and difficulty level</p>
+
+      <div class="form-group">
+        <label>Subject</label>
+        <select id="subjectSelect">
+          <option value="">-- Select Subject --</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Difficulty Level</label>
+        <select id="diffSelect">
+          <option value="">All Levels</option>
+          <option value="Beginner">🟢 Beginner</option>
+          <option value="Intermediate">🟡 Intermediate</option>
+          <option value="Advanced">🔴 Advanced</option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-back" onclick="goTo(2)">← Back</button>
+        <button class="btn-primary" onclick="showBooks()">
+          Find Books →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: RESULTS -->
+  <div class="step hidden" id="step4">
+    <div class="results-wrapper">
+      <div class="results-top">
+        <button class="btn-back" onclick="goTo(3)">← Back</button>
+        <div>
+          <h2>Recommended Books</h2>
+          <p id="resultCount" class="step-sub"></p>
+        </div>
+      </div>
+      <div id="booksContainer"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
